@@ -1,0 +1,15 @@
+[Unit]
+Description=Grabb
+After=syslog.target
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/home/Grabb/
+ExecStart=/home/Grabb/env/bin/python3 bot.py
+RestartSec=1
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
