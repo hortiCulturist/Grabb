@@ -98,10 +98,10 @@ async def chat_list_downloader(_, message: Message):
     await bot.send_message(message.from_user.id, 'Канал удалён')
 
 
-@bot.on_message(filters.regex('^delete promocode'))  # delete promocode *promocode*
+@bot.on_message(filters.regex('^delete_promocode'))  # delete_promocode_*promocode*
 async def chat_list_downloader(_, message: Message):
     text = message.text
-    text = text.split()
+    text = text.split('_')
     db.delete_promocode(text[2])
     await bot.send_message(message.from_user.id, 'Промокод удалён')
 
@@ -187,7 +187,7 @@ async def chat_list_downloader(_, message: Message):
                                                  f'delete channel (channel_id)\n\n'
 
                                                  f'**Удалить промокод:**\n'
-                                                 f'delete promocode (promocode)\n\n'
+                                                 f'delete_promocode_(promocode)\n\n'
 
                                                  f'**Мои каналы:**\n'
                                                  f'view channels (name)\n\n'
