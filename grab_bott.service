@@ -8,8 +8,8 @@ Type=simple
 User=root
 WorkingDirectory=/home/Grabb/
 ExecStart=/home/Grabb/env/bin/python3 bot.py
-RestartSec=1
-Restart=always
+RestartSec=10
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
