@@ -19,7 +19,6 @@ print("Bot started")
 # ОСНОВНАЯ ФУНКЦИЯ
 
 async def text_formatter(message_text, entities, url, my_promo, promo):
-    print(f'promo - {promo}')
     edit_t = message_text
     promo_size = len(promo)
     if entities is None:
@@ -31,10 +30,7 @@ async def text_formatter(message_text, entities, url, my_promo, promo):
             if i.length == promo_size:
                 edit_t = edit_t.replace(promo, my_promo)
                 where = edit_t.find(f'{my_promo}')
-                print(f"promo_size - {promo_size}")
-                print(f'{message_text[i.offset: where + promo_size]}')
                 coord = edit_t[where: where + promo_size]
-                print(f'coord - {coord}')
                 edit_t = edit_t.replace(
                     coord,
                     f'<a href="{url}">{coord}</a>')
@@ -234,7 +230,6 @@ async def chat_list_downloader(_, message: Message):
 
 @bot.on_message(filters.text)
 async def echo_channel(_, message: Message):
-    print(message.entities)
     data_list = db.get_channels_data()
     for donor_id, target_id, lnk, my_promo, promo in data_list:
         if donor_id == message.chat.id:
