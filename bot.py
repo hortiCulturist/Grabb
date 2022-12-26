@@ -22,8 +22,16 @@ async def text_formatter(message_text, entities, url, my_promo, promo):
     edit_t = message_text
     promo_size = len(promo)
     if entities is None:
-        return message_text
+        print('No entities')
+        edit_t = edit_t + f'\n\n {promo}'
+        where = edit_t.find(f'{promo}')
+        coord = edit_t[where: where + promo_size]
+        edit_t = edit_t.replace(
+            coord,
+            f'<a href="{url}">{coord}</a>')
+        return edit_t
     for i in entities:
+        print('Yes entities')
         if i.type == MessageEntityType.TEXT_LINK:
             if i.length != promo_size:
                 edit_t = edit_t.replace(message_text[i.offset: i.offset + i.length], '')
