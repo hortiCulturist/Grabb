@@ -178,7 +178,7 @@ async def chat_list_downloader(_, message: Message):
                                                  f'add my channel (name) (channel_id)\n\n'
 
                                                  f'**Добавить промокод:**\n'
-                                                 f'add promocode (name) (promocode)\n\n'
+                                                 f'add_promocode_name_promocode\n\n'
 
                                                  f'**Удалить паттерн:**\n'
                                                  f'delete pattern (name)\n\n'
